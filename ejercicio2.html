@@ -6,12 +6,24 @@
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
+var x = 50;
+var y = 50;
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.fillStyle = "red";
-ctx.beginPath();
-ctx.arc(50,50,20,0,2*Math.PI);
-ctx.stroke();
+function pintar(){
+  ctx.beginPath();
+  ctx.arc(x,y,20,0,2*Math.PI);
+  ctx.stroke();
+  }
+  function mover(){
+  x = x+5;
+  y = y+5;
+  }
+setInterval (function(){
+  mover();
+  pintar();
+},50);
 </script>
 
 </body>
