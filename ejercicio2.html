@@ -10,8 +10,10 @@ var x = 50;
 var y = 50;
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-ctx.fillStyle = "red";
 function pintar(){
+  ctx.fillStyle = "#FFFFFF";
+  ctx.fillRect (0,0,c.width,c.height);
+  ctx.fillStyle = "#000000";
   ctx.beginPath();
   ctx.arc(x,y,20,0,2*Math.PI);
   ctx.stroke();
