@@ -10,6 +10,20 @@ var x = 50;
 var y = 50;
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+function pared(){
+  if(y=300){
+    y = y*(-1);
+  }
+  if(x=400){
+    x = x*(-1);
+  }
+  if(y=0){
+    y= y*(-1);
+  }
+  if(x=0){
+    x= x*(-1);
+  }
+}
 function pintar(){
   ctx.fillStyle = "#FFFFFF";
   ctx.fillRect (0,0,c.width,c.height);
@@ -25,6 +39,7 @@ function pintar(){
 setInterval (function(){
   mover();
   pintar();
+  pared();
 },50);
 </script>
 
