@@ -17,7 +17,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(function(stream) {
     var ctxAud = new AudioContext();
-    var input = ctxAud.createMediaStreamSource(stream)
+    var input = ctxAud.createMediaStreamSource(stream);
     var processor = ctxAud.createScriptProcessor(512,1,1);
 
     input.connect(processor);
@@ -30,8 +30,8 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(function
         var blob = bufferToWaveBlob(datos,fm);
         document.querySelector("audio").src = URL.createObjectURL(blob);
         document.getElementById("audio").play(); 
-    }  
-}
+    };  
+});
  </script>
  </body>
  </html>
