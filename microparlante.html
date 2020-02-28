@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>microParlante</title>
+  </head>
+  <body>
+    <h1>microParlante</h1>
+
+    <p>Encoding a pure sine wave to an Opus file </p>
+    <audio controls id="audio"></audio>
+    <script>
+var osc,mediaRecorder;
+var chunks = [];
+var clicked = false;
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+
+navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(function(stream) {
+    var ctxAud = new AudioContext();
+    var input = ctxAud.createMediaStreamSource(stream)
+    var processor = ctxAud.createScriptProcessor(512,1,1);
+
+    input.connect(processor);
+    processor.connect(ctxAud.destination);
+
+    processor.onaudioprocess = function(e){
+        var fm    = 44100;
+        var inBuf = e.inputBuffer;
+        var datos = inBuf.getChannelData(0);
+        var blob = bufferToWaveBlob(datos,fm);
+        document.querySelector("audio").src = URL.createObjectURL(blob);
+        document.getElementById("audio").play(); 
+    }  
+}
+ </script>
+ </body>
+ </html>
