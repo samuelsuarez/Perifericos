@@ -77,7 +77,6 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(function
         var datos = inBuf.getChannelData(0);
         var blob = bufferToWaveBlob(datos,inBuf.sampleRate);
         document.querySelector("audio").src = URL.createObjectURL(blob);
-        document.getElementById("audio").play(); 
     };  
 });
  </script>
